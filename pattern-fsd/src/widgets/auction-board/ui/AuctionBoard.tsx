@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { useAuctionStore, useAuctionTimer, CountdownTimer, ExtensionNotice } from "@/entities/auction";
-import { BidHistory } from "@/entities/bid";
+import { BidHistory, ViewerRanking } from "@/entities/bid";
 import { BidPanel, placeExternalBid } from "@/features/place-bid";
 import { TipButton } from "@/features/send-tip";
 import { CommentInput, CommentList } from "@/features/post-comment";
@@ -67,6 +67,8 @@ export function AuctionBoard() {
 
         {/* 入札履歴 */}
         <BidHistory />
+
+        <ViewerRanking />
 
         {/* 投げ銭・コメント */}
         <div className="bg-white rounded-2xl shadow-md p-6 space-y-4">

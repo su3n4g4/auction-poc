@@ -15,6 +15,7 @@ import { TipButton } from "@/features/tip/components/TipButton";
 import { CommentInput } from "@/features/comment/components/CommentInput";
 import { CommentList } from "@/features/comment/components/CommentList";
 import type { Comment } from "@/features/comment/types/comment";
+import { ViewerRanking } from "@/features/bid/components/ViewerRanking";
 
 const DUMMY_COMMENTS: Comment[] = [
   { id: "d1", userName: "山田さん", text: "これ欲しかったやつ！", timestamp: new Date() },
@@ -73,6 +74,9 @@ export default function AuctionPage() {
 
         {/* 入札履歴 */}
         <BidHistory />
+
+        {/* 入札回数ランキング */}
+        <ViewerRanking />
 
         {/* 投げ銭・コメント */}
         <div className="bg-white rounded-2xl shadow-md p-6 space-y-4">

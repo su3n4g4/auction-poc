@@ -4,3 +4,9 @@ export interface Bid {
   amount: number;
   timestamp: Date;
 }
+
+export interface BidStatusByUser {
+  userName: string;
+  maxAmount: number;
+  count: number;
+}
