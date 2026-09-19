@@ -3,20 +3,15 @@ import type { Bid, BidStatusByUser } from "../types";
 
 interface BidStore {
   bidHistory: Bid[];
-  viewerRanking: BidStatusByUser[];
   addBid: (bid: Bid) => void;
-  updateViewerRanking: (userName: string, amount: number) => void;
 }
 
-export const useBidStore = create<BidStore>((set, get) => ({
+export const useBidStore = create<BidStore>((set) => ({
   bidHistory: [],
-  viewerRanking: [],
   addBid: (bid: Bid) => {
-    const updateViewerRanking = get().updateViewerRanking;
     set((state) => ({
       bidHistory: [bid, ...state.bidHistory].slice(0, 50),
     }));
-    updateViewerRanking(bid.userName, bid.amount);
   },
 }));
 

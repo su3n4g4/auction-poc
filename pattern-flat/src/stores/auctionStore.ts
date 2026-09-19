@@ -30,12 +30,11 @@ export const useAuctionStore = create<AuctionStore>((set, get) => ({
   currentPrice: INITIAL_PRICE,
   remainingSeconds: INITIAL_SECONDS,
   bidHistory: [],
-  viewerRanking: [],
   extensionCount: 0,
   showExtensionNotice: false,
 
   placeBid: (amount: number, userName = "あなた") => {
-    const { currentPrice, remainingSeconds, viewerRanking } = get();
+    const { currentPrice, remainingSeconds } = get();
 
     if (amount <= currentPrice) {
       return {
@@ -52,12 +51,10 @@ export const useAuctionStore = create<AuctionStore>((set, get) => ({
     };
 
     const shouldExtend = remainingSeconds <= EXTENSION_THRESHOLD_SECONDS;
-    const newViewerRanking = updateViewerRanking(viewerRanking, userName, amount);
 
     set((state) => ({
       currentPrice: amount,
       bidHistory: [newBid, ...state.bidHistory].slice(0, 50),
-      viewerRanking: newViewerRanking,
       remainingSeconds: shouldExtend
         ? state.remainingSeconds + EXTENSION_DURATION_SECONDS
         : state.remainingSeconds,
@@ -71,14 +68,6 @@ export const useAuctionStore = create<AuctionStore>((set, get) => ({
   tickTimer: () => {
     set((state) => ({
       remainingSeconds: Math.max(0, state.remainingSeconds - 1),
-    }));
-  },
-
-  triggerExtension: () => {
-    set((state) => ({
-      remainingSeconds: state.remainingSeconds + EXTENSION_DURATION_SECONDS,
-      extensionCount: state.extensionCount + 1,
-      showExtensionNotice: true,
     }));
   },
 

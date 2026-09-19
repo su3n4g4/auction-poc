@@ -6,10 +6,11 @@
 
 ## 検証環境
 
-- Next.js 15（App Router）
-- TypeScript
-- Tailwind CSS
-- Zustand（状態管理）
+- Next.js 16.2.9（App Router）
+- React 19.2.4
+- TypeScript 5
+- Tailwind CSS v4
+- Zustand 5（状態管理）
 
 ## パターン別サマリー
 

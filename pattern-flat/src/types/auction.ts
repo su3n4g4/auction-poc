@@ -15,7 +15,6 @@ export interface AuctionState {
   currentPrice: number;
   remainingSeconds: number;
   bidHistory: Bid[];
-  viewerRanking: BidStatusByUser[];
   extensionCount: number;
   showExtensionNotice: boolean;
 }
@@ -23,7 +22,6 @@ export interface AuctionState {
 export interface AuctionActions {
   placeBid: (amount: number, userName?: string) => { success: boolean; error?: string };
   tickTimer: () => void;
-  triggerExtension: () => void;
   dismissExtensionNotice: () => void;
 }
 
