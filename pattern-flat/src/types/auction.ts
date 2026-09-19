@@ -15,6 +15,7 @@ export interface AuctionState {
   currentPrice: number;
   remainingSeconds: number;
   bidHistory: Bid[];
+  viewerRanking: BidStatusByUser[];
   extensionCount: number;
   showExtensionNotice: boolean;
 }
